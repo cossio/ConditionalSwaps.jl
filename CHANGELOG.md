@@ -5,3 +5,8 @@ All notable changes to this project will be documented in this file. The format 
 ## Unreleased
 
 ## 1.0.0
+
+### Added
+
+- `swap` function.
+- Register at https://github.com/cossio/CossioJuliaRegistry.
