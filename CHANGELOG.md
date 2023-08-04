@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## 2.1.0 - 2023-08-04
+
+### Added
+
+- `swap!` now broadcasts `conditions`.
+
 ## 2.0.0 - 2023-08-04
 
 ### Changed

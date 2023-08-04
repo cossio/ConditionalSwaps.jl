@@ -29,10 +29,51 @@ end
     swap((!).(cond), A, B) == swap(cond, B, A)
 end
 
-@testset "swap!" begin
+@testset "swap! case 1: cond, A, B of same sizes" begin
     cond = bitrand(10, 7)
     A = randn(size(cond))
     B = randn(size(cond))
+    A_new, B_new = swap(cond, A, B)
+    @inferred swap!(cond, A, B)
+    @test A == A_new
+    @test B == B_new
+end
+
+@testset "swap! case 2: scalar condition" begin
+    for cond in (true, false)
+        A = randn(10, 7)
+        B = randn(10, 7)
+        _A, _B = copy(A), copy(B)
+        @inferred swap!(cond, A, B)
+        @test A == (cond ? _B : _A)
+        @test B == (cond ? _A : _B)
+    end
+end
+
+@testset "swap! case 3: non-trivial broadcast, part 1" begin
+    cond = bitrand(10)
+    A = randn(10, 7)
+    B = randn(10, 7)
+    A_new, B_new = swap(cond, A, B)
+    @inferred swap!(cond, A, B)
+    @test A == A_new
+    @test B == B_new
+end
+
+@testset "swap! case 4: non-trivial broadcast, part 2" begin
+    cond = bitrand(10, 1)
+    A = randn(10, 7)
+    B = randn(10, 7)
+    A_new, B_new = swap(cond, A, B)
+    @inferred swap!(cond, A, B)
+    @test A == A_new
+    @test B == B_new
+end
+
+@testset "swap! case 4: non-trivial broadcast, part 3" begin
+    cond = bitrand(1, 7)
+    A = randn(10, 7)
+    B = randn(10, 7)
     A_new, B_new = swap(cond, A, B)
     @inferred swap!(cond, A, B)
     @test A == A_new
