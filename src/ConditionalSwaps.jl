@@ -21,44 +21,18 @@ Sets `x[i], y[i] == y[i], x[i]` or `x[i], y[i] == x[i], y[i]` in-place,
 depending to whether the corresponding `condition[i]` is true or false.
 """
 function swap!(conditions::Union{AbstractArray{Bool}, Bool}, x::AbstractArray, y::AbstractArray)
-    b = Broadcast.Broadcasted(tuple, (CartesianIndices(x), conditions))
-    for (i, c) in b
-        if c
-            x[i], y[i] = y[i], x[i]
+    if size(x) == size(y)
+        b = Broadcast.Broadcasted(tuple, (CartesianIndices(x), conditions))
+        for (i, c) in b
+            if c
+                x[i], y[i] = y[i], x[i]
+            end
         end
+        return x, y
+    else
+        throw(DimensionMismatch("x, y must have the same size"))
     end
-    return
 end
-
-# function swap!(conditions::AbstractArray{Bool}, x::AbstractArray, y::AbstractArray)
-#     if size(x) == size(y) == size(conditions)
-#         for i in eachindex(x, y, conditions)
-#             if conditions[i]
-#                 x[i], y[i] = y[i], x[i]
-#             else
-#                 x[i], y[i] = x[i], y[i]
-#             end
-#         end
-#         return x, y
-#     else
-#         throw(DimensionMismatch("x, y and conditions must have the same size"))
-#     end
-# end
-
-# function swap!(x::AbstractArray, y::AbstractArray, condition::Bool)
-#     if size(x) == size(y)
-#         for i in eachindex(x, y)
-#             if condition
-#                 x[i], y[i] = y[i], x[i]
-#             else
-#                 x[i], y[i] = x[i], y[i]
-#             end
-#         end
-#         return x, y
-#     else
-#         throw(DimensionMismatch("x, y must have the same size"))
-#     end
-# end
 
 
 end # module
