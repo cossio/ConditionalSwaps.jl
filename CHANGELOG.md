@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
-- `swap!` now broadcasts `conditions`.
+- `swap!` now broadcasts `conditions`. [b038129](https://github.com/cossio/ConditionalSwaps.jl/commit/b038129443ee08d2659b182e7146aba43e99fddc)
 
 ## 2.0.0 - 2023-08-04
 
