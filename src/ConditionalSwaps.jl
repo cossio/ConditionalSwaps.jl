@@ -1,5 +1,6 @@
 module ConditionalSwaps
 
+using Base.Broadcast: broadcasted
 
 """
     swap(conditions, x, y)
@@ -13,7 +14,6 @@ function swap(conditions::Union{AbstractArray{Bool}, Bool}, x, y)
     return x_new, y_new
 end
 
-
 """
     swap!(conditions, x, y)
 
@@ -22,10 +22,10 @@ depending to whether the corresponding `condition[i]` is true or false.
 """
 function swap!(conditions::Union{AbstractArray{Bool}, Bool}, x::AbstractArray, y::AbstractArray)
     if size(x) == size(y)
-        b = Broadcast.Broadcasted(tuple, (CartesianIndices(x), conditions))
-        for (i, c) in b
+        b = broadcasted(tuple, CartesianIndices(x), CartesianIndices(y), conditions)
+        for (ix, iy, c) in b
             if c
-                x[i], y[i] = y[i], x[i]
+                x[ix], y[iy] = y[ix], x[iy]
             end
         end
         return x, y
