@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## 1.1.0 - 2023-08-04
+
+### Added
+
+- In-place version, `swap!`.
+
 ## 1.0.0
 
 ### Added
