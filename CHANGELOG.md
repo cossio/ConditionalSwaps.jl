@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## 1.1.1 - 2023-08-04
+
+### Fixed
+
+- Restrict `swap!` to consistent sizes, since it would fail otherwise.
+
 ## 1.1.0 - 2023-08-04
 
 ### Added

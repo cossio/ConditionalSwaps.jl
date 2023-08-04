@@ -1,6 +1,6 @@
 # ConditionalSwaps
 
-Implements a function 
+Implements a function
 
 ```julia
 a, b = swap(conditions, x, y)

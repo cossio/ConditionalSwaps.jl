@@ -17,14 +17,12 @@ end
 """
     swap!(x, y, conditions)
 
-Ses `x[i], y[i] == y[i], x[i]` or `x[i], y[i] == x[i], y[i]` in-place,
+Sets `x[i], y[i] == y[i], x[i]` or `x[i], y[i] == x[i], y[i]` in-place,
 depending to whether the corresponding `condition[i]` is true or false.
 """
-function swap!(x::AbstractArray, y::AbstractArray, conditions::Union{AbstractArray{Bool}, Bool})
-    if size(x) != size(y)
-        throw(ArgumentError("x and y must have the same size"))
-    else
-        for i in eachindex(x, y)
+function swap!(x::AbstractArray, y::AbstractArray, conditions::AbstractArray{Bool})
+    if size(x) == size(y) == size(conditions)
+        for i in eachindex(x, y, conditions)
             if conditions[i]
                 x[i], y[i] = y[i], x[i]
             else
@@ -32,6 +30,23 @@ function swap!(x::AbstractArray, y::AbstractArray, conditions::Union{AbstractArr
             end
         end
         return x, y
+    else
+        throw(DimensionMismatch("x, y and conditions must have the same size"))
+    end
+end
+
+function swap!(x::AbstractArray, y::AbstractArray, condition::Bool)
+    if size(x) == size(y)
+        for i in eachindex(x, y)
+            if condition
+                x[i], y[i] = y[i], x[i]
+            else
+                x[i], y[i] = x[i], y[i]
+            end
+        end
+        return x, y
+    else
+        throw(ArgumentError("x and y must have the same size"))
     end
 end
 
