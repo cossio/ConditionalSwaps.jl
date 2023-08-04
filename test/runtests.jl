@@ -34,7 +34,7 @@ end
     A = randn(size(cond))
     B = randn(size(cond))
     A_new, B_new = swap(cond, A, B)
-    @inferred swap!(A, B, cond)
+    @inferred swap!(cond, A, B)
     @test A == A_new
     @test B == B_new
 end

@@ -11,11 +11,10 @@ where `conditions` is a boolean array and `x, y` are two arrays of the same size
 There is also an in-place version,
 
 ```julia
-swap!(x, y, conditions)
+swap!(conditions, x, y)
 ```
 
-(Notice the arguments are in a different order.)
-
+which modifies `x, y`.
 
 ## Installation
 

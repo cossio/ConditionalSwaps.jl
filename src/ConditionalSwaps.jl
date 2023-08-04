@@ -15,12 +15,12 @@ end
 
 
 """
-    swap!(x, y, conditions)
+    swap!(conditions, x, y)
 
 Sets `x[i], y[i] == y[i], x[i]` or `x[i], y[i] == x[i], y[i]` in-place,
 depending to whether the corresponding `condition[i]` is true or false.
 """
-function swap!(x::AbstractArray, y::AbstractArray, conditions::AbstractArray{Bool})
+function swap!(conditions::AbstractArray{Bool}, x::AbstractArray, y::AbstractArray)
     if size(x) == size(y) == size(conditions)
         for i in eachindex(x, y, conditions)
             if conditions[i]
@@ -46,7 +46,7 @@ function swap!(x::AbstractArray, y::AbstractArray, condition::Bool)
         end
         return x, y
     else
-        throw(ArgumentError("x and y must have the same size"))
+        throw(DimensionMismatch("x, y must have the same size"))
     end
 end
 

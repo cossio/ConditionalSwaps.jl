@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## 2.0.0 - 2023-08-04
+
+### Changed
+
+- Changed `swap!` argument order.
+
+### Added
+
 ## 1.1.1 - 2023-08-04
 
 ### Fixed
