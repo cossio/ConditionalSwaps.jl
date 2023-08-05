@@ -79,3 +79,5 @@ end
     @test A == A_new
     @test B == B_new
 end
+
+module aqua_tests include("aqua.jl") end
