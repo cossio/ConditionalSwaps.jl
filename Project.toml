@@ -1,7 +1,7 @@
 name = "ConditionalSwaps"
 uuid = "d4206499-9796-4f58-8a56-acae5424fe35"
 authors = ["JFdCD <jfdecd@icloud.com>"]
-version = "2.1.4"
+version = "2.1.5-DEV"
 
 [compat]
 julia = "1.9"

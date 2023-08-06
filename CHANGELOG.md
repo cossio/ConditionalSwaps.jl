@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Changed
 
-- Changed `swap!` argument order.
+- Changed `swap!` argument order. `swap` remains unchanged.
 
 ### Added
 
