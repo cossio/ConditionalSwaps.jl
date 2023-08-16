@@ -26,7 +26,7 @@ end
             @test A_new[i,j] == A[i,j] && B_new[i,j] == B[i,j]
         end
     end
-    swap((!).(cond), A, B) == swap(cond, B, A)
+    @test swap((!).(cond), A, B) == swap(cond, B, A)
 end
 
 @testset "swap! case 1: cond, A, B of same sizes" begin
