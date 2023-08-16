@@ -26,7 +26,12 @@ end
             @test A_new[i,j] == A[i,j] && B_new[i,j] == B[i,j]
         end
     end
+
+    # negating the condition is equivalent to exchanging A, B
     @test swap((!).(cond), A, B) == swap(cond, B, A)
+
+    # swapping twice with the same condition gives back the original arrays
+    @test swap(cond, A_new, B_new) == (A, B)
 end
 
 @testset "swap! case 1: cond, A, B of same sizes" begin
